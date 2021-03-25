@@ -16,7 +16,17 @@ body, html {height: 100%}
   background-size: cover;
 }
 </style>
+<style type="text/css">
+<!--
+li{
+	list-style-type:none;
+	margin-right:10px;
+	margin-bottom:10px;
+	float:left;
+}
 
+-->
+</style>
 <body>
 
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
@@ -28,10 +38,7 @@ body, html {height: 100%}
     1px 1px 0 #000; " id=time>COMING SOON</h1>
   </div>
 </div>
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+
 
 <script>
 // Set the date we're counting down to
@@ -63,21 +70,23 @@ var x = setInterval(function() {
   }
 }, 1000);
 </script>
-<script type="text/javascript">
-    var folder = "images"; 
-    $.ajax({
-        url: folder,
-        success: function(data) {
-            $(data).find("a").attr("href", function(i, val) {
-                $("body").append("<img src='" + folder + '/' + val + "'>");
-            });
-        }
-    });
-</script>
 
 
+<ul>
+	<?php
+		$dirname = "images/";
+		$images = scandir($dirname);
+		shuffle($images);
+		$ignore = array(".", "..");
+		foreach($images as $curimg){
+			if(!in_array($curimg, $ignore)) {
+				echo "<li><a href=\"$dirname$curimg\"><img src='img.php?src=$dirname$curimg&w=300&zc=1' alt='' /></a></li>\n ";
+			}
+		} 				
+	?>
+</ul>
 
 </body>
 
-</body>
+
 </html>
