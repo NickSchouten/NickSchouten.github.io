@@ -16,17 +16,6 @@ body, html {height: 100%}
   background-size: cover;
 }
 </style>
-<style type="text/css">
-<!--
-li{
-	list-style-type:none;
-	margin-right:10px;
-	margin-bottom:10px;
-	float:left;
-}
-
--->
-</style>
 <body>
 
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
@@ -72,19 +61,6 @@ var x = setInterval(function() {
 </script>
 
 
-<ul>
-	<?php
-		$dirname = "images/";
-		$images = scandir($dirname);
-		shuffle($images);
-		$ignore = array(".", "..");
-		foreach($images as $curimg){
-			if(!in_array($curimg, $ignore)) {
-				echo "<li><a href=\"$dirname$curimg\"><img src='img.php?src=$dirname$curimg&w=300&zc=1' alt='' /></a></li>\n ";
-			}
-		} 				
-	?>
-</ul>
 
 </body>
 
